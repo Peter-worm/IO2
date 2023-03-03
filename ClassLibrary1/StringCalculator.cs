@@ -19,7 +19,8 @@ namespace ClassLibrary1
             {
                 int current_number = int.Parse(num);
                 if (current_number < 0) throw new ArgumentOutOfRangeException();
-                wyn += int.Parse(num);
+                if(current_number<=1000)
+                    wyn += int.Parse(num);
             }
             return wyn;
 
