@@ -24,7 +24,26 @@ namespace TestProject1
         [InlineData("4511", 4511)]
         public void WhenStringProvided_ItShouldReturnItsValue(string input, int output)
         {
-            Assert.Equal(output,_calculator.Add(input));
+            Assert.Equal(output, _calculator.Add(input));
+        }
+
+        [Theory]
+        [InlineData("2,2", 4)]
+        [InlineData("3,2", 5)]
+        [InlineData("33,44", 77)]
+        [InlineData("4511,-5", 4506)]
+        public void WhenStringWithOneCOmaProvided_ItShouldReturnSumOfValues(string input, int output)
+        {
+            Assert.Equal(output, _calculator.Add(input));
+        }
+        [Theory]
+        [InlineData("2\n2", 4)]
+        [InlineData("3\n2", 5)]
+        [InlineData("33\n44", 77)]
+        [InlineData("4511\n-5", 4506)]
+        public void WhenStringWithOneEnterProvided_ItShouldReturnSumOfValues(string input, int output)
+        {
+            Assert.Equal(output, _calculator.Add(input));
         }
     }
 }
