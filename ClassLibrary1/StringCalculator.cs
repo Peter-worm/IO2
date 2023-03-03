@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,20 +13,15 @@ namespace ClassLibrary1
         {
             if (number.Length == 0) return 0;
             if(!number.Contains(',')&&!number.Contains('\n')) return int.Parse(number);
-
-            if (number.Contains(',')){
-                var numbers = number.Split(',');
-                if (numbers.Length==2)
-                    return int.Parse(numbers[0]) + int.Parse(numbers[1]);
-            }
-
-            if (number.Contains('\n'))
+            int wyn = 0;
+            var numbers = number.Split(',','\n');
+            foreach (string num in numbers)
             {
-                var numbers = number.Split('\n');
-                if (numbers.Length == 2)
-                    return int.Parse(numbers[0]) + int.Parse(numbers[1]);
+                int current_number = int.Parse(num);
+                if (current_number < 0) throw new ArgumentOutOfRangeException();
+                wyn += int.Parse(num);
             }
-
+            return wyn;
 
             throw new ArgumentException();
         }
